@@ -1,12 +1,12 @@
 spring:
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/mercadolivro?createDatabaseIfNotExist=true
     username: root
     password: root
 
   jpa:
     hibernate:
-      dialect: org.hibernate.dialect.MySQL5Dialect
       ddl-auto: update
 
+  flyway:
+    locations: classpath:db/migration
