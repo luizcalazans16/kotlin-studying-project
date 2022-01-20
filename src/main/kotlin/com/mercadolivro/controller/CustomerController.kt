@@ -2,7 +2,9 @@ package com.mercadolivro.controller
 
 import com.mercadolivro.controller.request.CreateCustomerRequest
 import com.mercadolivro.controller.request.UpdateCustomerRequest
+import com.mercadolivro.controller.response.CustomerResponse
 import com.mercadolivro.extension.toCustomerEntity
+import com.mercadolivro.extension.toResponse
 import com.mercadolivro.model.Customer
 import com.mercadolivro.service.CustomerService
 import lombok.extern.log4j.Log4j2
@@ -17,13 +19,13 @@ class CustomerController(
 ) {
 
     @GetMapping
-    fun getAll(@RequestParam name: String?): List<Customer> {
-        return customerService.getAll(name)
+    fun getAll(@RequestParam name: String?): List<CustomerResponse> {
+        return customerService.getAll(name).map { it.toResponse() }
     }
 
     @GetMapping("/{id}")
-    fun getCustomer(@PathVariable id: Int): Customer {
-        return customerService.findById(id)
+    fun getCustomer(@PathVariable id: Int): CustomerResponse {
+        return customerService.findById(id).toResponse()
     }
 
     @PostMapping
@@ -35,7 +37,7 @@ class CustomerController(
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun update(@PathVariable id: Int, @RequestBody customer: UpdateCustomerRequest) {
-        val savedCustomer = getCustomer(id)
+        val savedCustomer = customerService.findById(id)
         customerService.update(customer.toCustomerEntity(savedCustomer))
     }
 
