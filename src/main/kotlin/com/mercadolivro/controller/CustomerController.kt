@@ -10,6 +10,7 @@ import com.mercadolivro.service.CustomerService
 import lombok.extern.log4j.Log4j2
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("customers")
@@ -30,7 +31,7 @@ class CustomerController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody customer: CreateCustomerRequest) {
+    fun create(@RequestBody @Valid customer: CreateCustomerRequest) {
         customerService.create(customer.toCustomerEntity())
     }
 
