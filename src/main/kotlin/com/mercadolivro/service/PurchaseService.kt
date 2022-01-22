@@ -1,7 +1,6 @@
 package com.mercadolivro.service
 
 import com.mercadolivro.events.PurchaseEvent
-import com.mercadolivro.model.Book
 import com.mercadolivro.model.Purchase
 import com.mercadolivro.repository.PurchaseRepository
 import org.springframework.context.ApplicationEventPublisher

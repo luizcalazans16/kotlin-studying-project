@@ -1,6 +1,6 @@
 package com.mercadolivro.exception
 
-class BadRequestException(
+class AuthenticationException(
     override val message: String,
     val errorCode: String
 ) : Exception()

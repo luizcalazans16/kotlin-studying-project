@@ -15,7 +15,9 @@ fun CreateCustomerRequest.toCustomerEntity(): Customer {
     return Customer(
         name = this.name,
         email = this.email,
-        status = CustomerStatus.ATIVO)
+        status = CustomerStatus.ATIVO,
+        password = this.password
+    )
 }
 
 fun UpdateCustomerRequest.toCustomerEntity(previousValue: Customer): Customer {
@@ -23,7 +25,9 @@ fun UpdateCustomerRequest.toCustomerEntity(previousValue: Customer): Customer {
         id = previousValue.id,
         name = this.name,
         email = this.email,
-        status = previousValue.status)
+        status = previousValue.status,
+        password = previousValue.password
+    )
 }
 
 fun CreateBookRequest.toBookEntity(customer: Customer): Book {

@@ -5,7 +5,6 @@ import com.mercadolivro.controller.request.UpdateCustomerRequest
 import com.mercadolivro.controller.response.CustomerResponse
 import com.mercadolivro.extension.toCustomerEntity
 import com.mercadolivro.extension.toResponse
-import com.mercadolivro.model.Customer
 import com.mercadolivro.service.CustomerService
 import lombok.extern.log4j.Log4j2
 import org.springframework.http.HttpStatus

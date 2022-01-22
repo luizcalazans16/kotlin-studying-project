@@ -26,18 +26,20 @@ data class Book(
 
     @Enumerated(EnumType.STRING)
     var status: BookStatus? = null
-    set(value) {
-        if(field == BookStatus.CANCELADO || field == BookStatus.DELETADO )
-            throw BadRequestException(Errors.ML102.message.format(field), Errors.ML102.code)
+        set(value) {
+            if (field == BookStatus.CANCELADO || field == BookStatus.DELETADO)
+                throw BadRequestException(Errors.ML102.message.format(field), Errors.ML102.code)
 
-        field = value
-    }
+            field = value
+        }
 
-    constructor(id: Int? = null,
-    name: String,
-    price: BigDecimal,
-    customer: Customer? = null,
-    status: BookStatus?): this(id, name, price, customer) {
+    constructor(
+        id: Int? = null,
+        name: String,
+        price: BigDecimal,
+        customer: Customer? = null,
+        status: BookStatus?
+    ) : this(id, name, price, customer) {
         this.status = status
     }
 }

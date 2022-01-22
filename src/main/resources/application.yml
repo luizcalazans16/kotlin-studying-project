@@ -10,3 +10,6 @@ spring:
     locations: classpath:db/migration
   jackson:
     default-property-inclusion: non_null
+jwt:
+  secret: 39ac115b-20cc-4b68-b7af-e8b75109645a
+  expiration: 999999
