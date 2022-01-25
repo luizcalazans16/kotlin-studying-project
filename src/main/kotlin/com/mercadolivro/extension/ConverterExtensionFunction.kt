@@ -70,7 +70,7 @@ fun Book.toResponse(): BookResponse {
     )
 }
 
-fun <T>Page<T>.toPageResponse(): PageResponse<T> {
+fun <T> Page<T>.toPageResponse(): PageResponse<T> {
     return PageResponse(
         this.content,
         this.number,
