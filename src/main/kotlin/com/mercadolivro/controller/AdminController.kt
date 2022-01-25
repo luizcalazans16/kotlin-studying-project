@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 @Log4j2
 class AdminController() {
 
-    @GetMapping("/report")
+    @GetMapping("/reports")
     fun report(): String {
         return "This is a report"
     }

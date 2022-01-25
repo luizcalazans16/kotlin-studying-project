@@ -17,7 +17,7 @@ import javax.validation.Valid
 @RequestMapping("customers")
 @Log4j2
 class CustomerController(
-    val customerService: CustomerService
+    private val customerService: CustomerService
 ) {
 
     @GetMapping

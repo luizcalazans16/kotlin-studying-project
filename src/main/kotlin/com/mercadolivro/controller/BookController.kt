@@ -3,7 +3,9 @@ package com.mercadolivro.controller
 import com.mercadolivro.controller.request.CreateBookRequest
 import com.mercadolivro.controller.request.UpdateBookRequest
 import com.mercadolivro.controller.response.BookResponse
+import com.mercadolivro.controller.response.PageResponse
 import com.mercadolivro.extension.toBookEntity
+import com.mercadolivro.extension.toPageResponse
 import com.mercadolivro.extension.toResponse
 import com.mercadolivro.service.BookService
 import com.mercadolivro.service.CustomerService
@@ -17,13 +19,13 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("books")
 class BookController(
-    val bookService: BookService,
-    val customerService: CustomerService
+    private val bookService: BookService,
+    private val customerService: CustomerService
 ) {
 
     @GetMapping
-    fun findAll(@PageableDefault(page = 0, size = 10) pageable: Pageable): Page<BookResponse> {
-        return bookService.findAll(pageable).map { it.toResponse() }
+    fun findAll(@PageableDefault(page = 0, size = 10) pageable: Pageable): PageResponse<BookResponse> {
+        return bookService.findAll(pageable).map { it.toResponse() }.toPageResponse()
     }
 
     @GetMapping("/{id}")
