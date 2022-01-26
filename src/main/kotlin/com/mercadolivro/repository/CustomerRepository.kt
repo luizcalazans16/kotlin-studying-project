@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository
 
 interface CustomerRepository : CrudRepository<Customer, Int> {
 
-    fun findByName(name: String): List<Customer>
+    fun findByNameContaining(name: String): List<Customer>
 
     fun existsByEmail(email: String): Boolean
 

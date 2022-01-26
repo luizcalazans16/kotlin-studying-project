@@ -26,7 +26,7 @@ class CustomerController(
 
     @GetMapping("/{id}")
     @UserCanOnlyAccessTheirOwnResource
-    fun getCustomer(@PathVariable id: Int): CustomerResponse {
+    fun getCustomerById(@PathVariable id: Int): CustomerResponse {
         return customerService.findById(id).toResponse()
     }
 
